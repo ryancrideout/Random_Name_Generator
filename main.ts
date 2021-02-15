@@ -1,28 +1,81 @@
-// This will be the main page of the Random Generator
+// This is the main page of the Random Generator
 
-// TODO: Add weights to the characters? As in, some characters are more likely to occur than others.
+// This is deprecated now.
+// const charAlp = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+//                  'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-const charAlp = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-                 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
+// This is NOT deprecated, it still gets used.
 const vowels = ['a', 'e', 'i', 'o', 'u', 'y']    
 
 // These are consonants where, if we put one of these in the name, we want to follow up with a vowel immediately after.
-// It just looks nicer that way. Note, that, or the could be doubled.
-const consonantReset = ['b', 'c', 'd', 'f', 'h', 'k', 'm', 'n', 'p', 'q', 't', 
+// It just looks nicer that way. Note, that, or the consonant in question could be doubled.
+const consonantReset = ['b', 'c', 'd', 'f', 'g', 'j', 'h', 'k', 'm', 'n', 'p', 'q', 'r', 't', 
                         'v', 'w', 'x', 'z']
 
 // These are letters that are acceptable to have occur twice in a row.
 const doubles = ['b', 'c', 'e', 'f', 'g', 'h', 'l', 'n', 'o', 'p', 'r', 's', 't',
                  'v', 'z']
 
+// Tried making this array to be something like ['a', 1], but TypeScript didn't like that I guess...
+// Also, here's the reference for the Weighted Random values:
+// https://blobfolio.com/2019/randomizing-weighted-choices-in-javascript/
+const weightedCharAlp = [
+    {char: 'a', weight: 1},
+    {char: 'b', weight: 4},
+    {char: 'c', weight: 4},
+    {char: 'd', weight: 5},
+    {char: 'e', weight: 1},
+    {char: 'f', weight: 4},
+    {char: 'g', weight: 4},
+    {char: 'h', weight: 4},
+    {char: 'i', weight: 1},
+    {char: 'j', weight: 1},
+    {char: 'k', weight: 4},
+    {char: 'l', weight: 4},
+    {char: 'm', weight: 4},
+    {char: 'n', weight: 5},
+    {char: 'o', weight: 1},
+    {char: 'p', weight: 4},
+    {char: 'q', weight: 2},
+    {char: 'r', weight: 4},
+    {char: 's', weight: 5},
+    {char: 't', weight: 5},
+    {char: 'u', weight: 1},
+    {char: 'v', weight: 2},
+    {char: 'w', weight: 2},
+    {char: 'x', weight: 1},
+    {char: 'y', weight: 1},
+    {char: 'z', weight: 2},
+];
+
+// Calculate the 'total' weight of weightedCharAlp
+var weightedCharAlpTotal = 0
+for (let i = 0; i < weightedCharAlp.length; i++) {
+    weightedCharAlpTotal += weightedCharAlp[i]["weight"]
+}
+
+const weightedVowels = [
+    {char: 'a', weight: 10},
+    {char: 'e', weight: 10},
+    {char: 'i', weight: 10},
+    {char: 'o', weight: 8},
+    {char: 'u', weight: 6},
+    {char: 'y', weight: 1},
+]
+
+// Calculate the 'total' weight of weightedVowels
+var weightedVowelTotal = 0
+for (let i = 0; i < weightedVowels.length; i++) {
+    weightedVowelTotal += weightedVowels[i]["weight"]
+}
+
 // This function checks for duplicates, and if we end up with a scenario with an unwanted duplicate, we remove it.
-const duplicateCheck = (charArray, prevChar, isDouble, ranChar) => {
-    // var ranChar = charArray[Math.floor(Math.random() * charArray.length)]
+const duplicateCheck = (weightedCharArray, weightedCharArrayTotal, prevChar, isDouble, ranChar) => {
     // This filters out unwanted duplicates.
     if ((ranChar == prevChar && !(ranChar in doubles)) || isDouble) {
         while (ranChar == prevChar) {
-            var ranChar = charArray[Math.floor(Math.random() * charArray.length)]
+            // var ranChar = charArray[Math.floor(Math.random() * charArray.length)]
+            var ranChar = weightedRanChar(weightedCharArray, weightedCharArrayTotal)
             }
     } else if (ranChar == prevChar) {
         isDouble = true
@@ -33,15 +86,36 @@ const duplicateCheck = (charArray, prevChar, isDouble, ranChar) => {
     return [ranChar, isDouble]
 }
 
+// Given a weighted array of character values (and the total weight), return a random character
+const weightedRanChar = (weightedArray, weightedArrayTotal) => {
+    // Generate a threshold here - when we hit this "threshold" we get our random value.
+    const threshold = Math.random() * weightedArrayTotal
+
+    // "total" keeps track of where we are in the weighted array.
+    var total = 0
+
+    for (var i = 0; i < weightedArray.length - 1; i++) {
+        total += weightedArray[i]["weight"]
+
+        // As soon as the total exceeds the threshold, return the value.
+        if (total >= threshold) {
+            return weightedArray[i]["char"]
+        }
+    }
+
+    // If we go through the entire for loop and haven't returned anything, return the last value.
+    return weightedArray[weightedArray.length - 1]["char"]
+}
+
 const generateName = () => {
 
     var name = []
     
-    // Randomly generate how long our name will be. For now, it'll be anywhere from 2-12 characters long.
+    // Randomly generate how long our name will be. For now, it'll be anywhere from 4-10 characters long.
     //
     // Explanation for the math behind charLen can be found here:
     // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
-    var charLen = Math.floor(Math.random() * 10) + 2
+    var charLen = Math.floor(Math.random() * 7) + 4
 
     // Need to establish some rules for creating the names so that they're not too random.
     // 1) There needs to be minimum 1 vowel in the name.
@@ -64,24 +138,26 @@ const generateName = () => {
         // Grab a random letter. Perform some checks in correspondence to our above rules to see if
         // we pull a vowel or a consonant.
         if (i === vowelLocation || consonantCount === 3) {
-            var ranChar = vowels[Math.floor(Math.random() * vowels.length)]
+            var ranChar = weightedRanChar(weightedVowels, weightedVowelTotal)
 
             // Check for duplicates here.
-            var ranCharAndDouble = duplicateCheck(vowels, prevChar, isDouble, ranChar)
+            var ranCharAndDouble = duplicateCheck(weightedVowels, weightedVowelTotal, prevChar, isDouble, ranChar)
             ranChar = ranCharAndDouble[0]
             isDouble = ranCharAndDouble[1]
 
             // reset consonantCount
             consonantCount = 0
         } else {
-            var ranChar = charAlp[Math.floor(Math.random() * charAlp.length)]
+            var ranChar = weightedRanChar(weightedCharAlp, weightedCharAlpTotal)
 
             // Check for duplicates here.
-            var ranCharAndDouble = duplicateCheck(charAlp, prevChar, isDouble, ranChar)
+            var ranCharAndDouble = duplicateCheck(weightedCharAlp, weightedCharAlpTotal, prevChar, isDouble, ranChar)
             ranChar = ranCharAndDouble[0]
             isDouble = ranCharAndDouble[1]
             
             // Check to see if we get a consonant or a vowel. Note some consonants will force a vowel to come after it.
+            // NOTE: "if vowels.indexOf(ranChar) >= 0" is a cute way of doing "if ranChar in vowels". I don't know how
+            // to hook that check up in JavaScript properly.
             if (vowels.indexOf(ranChar) >= 0) {
                 consonantCount = 0
             } else if (consonantReset.indexOf(ranChar) >= 0) {
