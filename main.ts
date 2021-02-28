@@ -4,6 +4,9 @@
 import {vowels, consonantReset, doubles, weightedCharAlp, weightedVowels,
         weightedCharAlpTotal, weightedVowelTotal} from "./letterArrayGenerator"
 
+// Import titles from titles.ts
+import {titles} from "./titles"
+
 // This function checks for duplicates, and if we end up with a scenario with an unwanted duplicate, we remove it.
 const duplicateCheck = (weightedCharArray, weightedCharArrayTotal, prevChar, isDouble, ranChar) => {
     // This filters out unwanted duplicates.
@@ -113,7 +116,19 @@ export function generateName() {
         name.push(ranChar)
     }
 
+    var fullName = name.join('')
+
+    // If we have the "generateTitleCheckBox" checked, we generate a title for the name.
+    var generateTitleCheckBox = (<HTMLInputElement>document.getElementById("generateTitle"));
+    if (generateTitleCheckBox.checked == true) {
+        var titleArrayLength = titles.length
+        var titleIndex = Math.floor(Math.random() * titleArrayLength)
+        var title = titles[titleIndex]
+
+        fullName = fullName + ", the " + title
+    }
+
     // Grab the text box from the HTML file and populate the textbox.
     var textBox = (<HTMLInputElement>document.getElementById("nameField"));
-    textBox.value = name.join('')
+    textBox.value = fullName
 }
