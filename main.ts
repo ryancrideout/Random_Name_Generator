@@ -132,3 +132,19 @@ export function generateName() {
     var textBox = (<HTMLInputElement>document.getElementById("nameField"));
     textBox.value = fullName
 }
+
+/*
+
+I want to overhaul the logic in the random name generator, Timo suggested looking at phonemes and syllables.
+
+This might be good: (This is VERY good)
+https://www.flipcode.com/archives/Generating_Names_Phonetically.shtml
+
+This also might be good?
+https://www.dyslexia-reading-well.com/44-phonemes-in-english.html
+
+Also MAYBE this?
+https://github.com/philipperemy/name-dataset
+
+
+*/
