@@ -7,6 +7,9 @@ import {vowels, consonantReset, doubles, weightedCharAlp, weightedVowels,
 // Import titles from titles.ts
 import {titles} from "./titles"
 
+// Going to have to create Name Templates as well as generate Phonetics.
+// import somewhere.. I think have nametemplates import from phonetics and have here import nametemplates
+
 // This function checks for duplicates, and if we end up with a scenario with an unwanted duplicate, we remove it.
 const duplicateCheck = (weightedCharArray, weightedCharArrayTotal, prevChar, isDouble, ranChar) => {
     // This filters out unwanted duplicates.
