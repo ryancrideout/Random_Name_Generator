@@ -7,8 +7,13 @@ import {vowels, consonantReset, doubles, weightedCharAlp, weightedVowels,
 // Import titles from titles.ts
 import {titles} from "./titles"
 
+// Import name templates from nameTemplates
+import {nameTemplate_1} from "./nameTemplates"
+
 // Going to have to create Name Templates as well as generate Phonetics.
 // import somewhere.. I think have nametemplates import from phonetics and have here import nametemplates
+
+// Need to create an array of nameTemplates?
 
 // This function checks for duplicates, and if we end up with a scenario with an unwanted duplicate, we remove it.
 const duplicateCheck = (weightedCharArray, weightedCharArrayTotal, prevChar, isDouble, ranChar) => {
@@ -48,7 +53,51 @@ const weightedRanChar = (weightedArray, weightedArrayTotal) => {
     return weightedArray[weightedArray.length - 1]["char"]
 }
 
+export function generateName() {
+
+    // Redid the logic behind name generation, this is what I used for inspiration:
+    // https://www.flipcode.com/archives/Generating_Names_Phonetically.shtml
+
+    // Will need to decide on a name template. Will include that logic later.
+
+    /*
+    [phoneme_t, phoneme_d],
+    [phoneme_short_a, phoneme_long_a],
+    [phoneme_ng, phoneme_r]
+    */
+
+    var templateLength = nameTemplate_1
+
+    var name = []
+
+    for (var i = 0; i < nameTemplate_1.length; i++) {
+
+        // Randomly determine what individual phoneme we'll use - first determine what phoneme to use.
+        var phonemeArrayIndex = Math.floor(Math.random() * nameTemplate_1[i].length)
+        // Then decide what "character" (for lack of a better word) variation to use.
+        var randomPhonemeIndex = Math.floor(Math.random() * nameTemplate_1[i][phonemeArrayIndex].length)
+        name.push(nameTemplate_1[i][phonemeArrayIndex][randomPhonemeIndex])
+    }
+
+    var fullName = name.join('')
+
+    // If we have the "generateTitleCheckBox" checked, we generate a title for the name.
+    var generateTitleCheckBox = (<HTMLInputElement>document.getElementById("generateTitle"));
+    if (generateTitleCheckBox.checked == true) {
+        var titleArrayLength = titles.length
+        var titleIndex = Math.floor(Math.random() * titleArrayLength)
+        var title = titles[titleIndex]
+
+        fullName = fullName + ", the " + title
+    }
+
+    // Grab the text box from the HTML file and populate the textbox.
+    var textBox = (<HTMLInputElement>document.getElementById("nameField"));
+    textBox.value = fullName
+}
+
 // This is the main function where we generate names. Whoo!
+/*
 export function generateName() {
 
     var name = []
@@ -135,6 +184,7 @@ export function generateName() {
     var textBox = (<HTMLInputElement>document.getElementById("nameField"));
     textBox.value = fullName
 }
+*/
 
 /*
 
