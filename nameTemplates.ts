@@ -102,10 +102,20 @@ export const phonemeArray = [
 ]
 */
 
+// Don't know what this name template is supposed to be.
 export const nameTemplate_1 = [
     [phoneme_t, phoneme_d],
     [phoneme_short_a, phoneme_long_a],
     [phoneme_ng, phoneme_r]
+]
+
+// This is supposed to be "Darius"
+export const nameTemplate_2  = [
+    [phoneme_d, phoneme_b, phoneme_ch],
+    [phoneme_long_a, phoneme_short_a, phoneme_long_ar, phoneme_short_ar],
+    [phoneme_short_e],
+    [phoneme_short_u],
+    [phoneme_s]
 ]
 
 // What do we want for a test template?
