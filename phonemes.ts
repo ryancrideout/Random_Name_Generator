@@ -62,7 +62,7 @@ export const phoneme_short_o = ['o', 'a', 'au', 'aw', 'ough', 'ho']
 
 export const phoneme_short_u = ['u', 'o', 'oo', 'ou']
 
-export const phoneme_long_a = ['a', 'ay', 'ai', 'ey', 'ei', 'eigh', 'aigh', 'er', 'et', 'ei', 'au', 'ea']
+export const phoneme_long_a = ['a', 'ay', 'ai', 'ey', 'ei', 'eigh', 'aigh', 'er', 'et', 'au', 'ea']
 
 export const phoneme_long_e = ['e', 'ea', 'ee', 'ey', 'ie', 'y', 'oe', 'i', 'ei', 'eo', 'ay']
 
@@ -87,3 +87,19 @@ export const phoneme_ir = ['irr', 'ere', 'eer']
 export const phoneme_or = ['or', 'ore', 'oor']
 
 export const phoneme_ur = ['ur', 'ir', 'er', 'ear', 'or', 'ar']
+
+export const phoneme_name_start_one = ['d', 'b', 'ch', 'tch', 'tu', 'ti', 'te', 't', 'j']
+
+export const phoneme_name_start_two = ['d', 't', 'j', 'n']
+
+export const phoneme_name_start_three = ['p', 'h', 'wh', 'g', 'gh', 'gu']
+
+export const phoneme_name_middle_a = ['a', 'ai', 'au', 'ay', 'ea']
+
+export const phoneme_name_middle_o = ['o', 'oo', 'ou']
+
+export const phoneme_name_middle_t = ['t', 'tt']
+
+export const phoneme_name_middle_ar = ['ar', 'er', 'our', 'ur', 'air', 'ear', 'eir']
+
+export const phoneme_name_end_one = ['ius', 'eus', 'os', 'us', 'uis', 'ies']

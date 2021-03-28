@@ -41,7 +41,15 @@ import {
     phoneme_long_ar,
     phoneme_ir,
     phoneme_or,
-    phoneme_ur
+    phoneme_ur,
+    phoneme_name_start_one,
+    phoneme_name_start_two,
+    phoneme_name_start_three,
+    phoneme_name_middle_a,
+    phoneme_name_middle_o,
+    phoneme_name_middle_t,
+    phoneme_name_middle_ar,
+    phoneme_name_end_one
 } from "./phonemes"
 
 // Maybe this could be a dictionary? <number>: <array>
@@ -88,39 +96,37 @@ export const phonemeArray = [
     phoneme_long_ar,
     phoneme_ir,
     phoneme_or,
-    phoneme_ur
+    phoneme_ur,
+    phoneme_name_start_one,
+    phoneme_name_start_two,
+    phoneme_name_start_three,
+    phoneme_name_middle_a,
+    phoneme_name_middle_o,
+    phoneme_name_middle_t,
+    phoneme_name_middle_ar,
+    phoneme_name_end_one
 ]
 // Could build custom phonemes that include other phonemes.
 
-// Alright how do we build a name template?
-// Just go for an array, index of:
-/*
-[
-    [phoneme_t, phoneme_d],
-    [phoneme_short_a, phoneme_long_a],
-    [phoneme_ng, phoneme_r]
-]
-*/
-
-// Don't know what this name template is supposed to be.
+// Don't know what this name template is supposed to be... and I made it!
+// I think it's just supposed to be something simple.
 export const nameTemplate_1 = [
-    [phoneme_t, phoneme_d],
-    [phoneme_short_a, phoneme_long_a],
+    [phoneme_name_start_two],
+    [phoneme_name_middle_a],
     [phoneme_ng, phoneme_r]
 ]
 
-// This is supposed to be "Darius"
+// This is supposed to be "Darius" - at least, that's what inspired the name template.
 export const nameTemplate_2  = [
-    [phoneme_d, phoneme_b, phoneme_ch],
-    [phoneme_long_a, phoneme_short_a, phoneme_long_ar, phoneme_short_ar],
-    [phoneme_short_e],
-    [phoneme_short_u],
-    [phoneme_s]
+    [phoneme_name_start_one],
+    [phoneme_name_middle_ar],
+    [phoneme_name_end_one]
 ]
 
-// What do we want for a test template?
-// 1) phoneme_t, phoneme_d
-// 2) phoneme_short_a, phoneme_long_a
-// 3) phoneme_ng, phoneme_r
-
-// How would I do this in Python?
+// The inspiration for this name template is "Porter".
+export const nameTemplate_3 = [
+    [phoneme_name_start_three],
+    [phoneme_or],
+    [phoneme_name_middle_t],
+    [phoneme_ur]
+]
