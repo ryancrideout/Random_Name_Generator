@@ -45,9 +45,11 @@ import {
     phoneme_name_start_one,
     phoneme_name_start_two,
     phoneme_name_start_three,
+    phoneme_name_start_four,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
+    phoneme_name_middle_i,
     phoneme_name_middle_ar,
     phoneme_name_end_one
 } from "./phonemes"
@@ -100,9 +102,11 @@ export const phonemeArray = [
     phoneme_name_start_one,
     phoneme_name_start_two,
     phoneme_name_start_three,
+    phoneme_name_start_four,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
+    phoneme_name_middle_i,
     phoneme_name_middle_ar,
     phoneme_name_end_one
 ]
@@ -117,16 +121,39 @@ export const nameTemplate_1 = [
 ]
 
 // This is supposed to be "Darius" - at least, that's what inspired the name template.
-export const nameTemplate_2  = [
+export const nameTemplate_darius  = [
     [phoneme_name_start_one],
     [phoneme_name_middle_ar],
     [phoneme_name_end_one]
 ]
 
 // The inspiration for this name template is "Porter".
-export const nameTemplate_3 = [
+export const nameTemplate_porter = [
     [phoneme_name_start_three],
     [phoneme_or],
     [phoneme_name_middle_t],
     [phoneme_ur]
+]
+
+// The inspiration for this name template is "Ryan".
+export const nameTemplate_ryan = [
+    [phoneme_r, phoneme_h],
+    [phoneme_y],
+    [phoneme_short_a, phoneme_long_a],
+    [phoneme_n]
+]
+
+// The inspiration for this name template is "Timo"
+export const nameTemplate_timo = [
+    [phoneme_name_start_four],
+    [phoneme_name_middle_i],
+    [phoneme_m],
+    [phoneme_short_o, phoneme_long_o]
+]
+
+// The inspiration for this name template is "Lux"
+export const nameTemplate_lux = [
+    [phoneme_l],
+    [phoneme_short_u],
+    [phoneme_z]
 ]
