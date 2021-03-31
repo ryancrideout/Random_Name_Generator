@@ -96,6 +96,8 @@ export const phoneme_name_start_three = ['p', 'h', 'wh', 'g', 'gh', 'gu']
 
 export const phoneme_name_start_four = ['t', 'th', 'mn', 'm', 'n', 'kn', 'gn', 'r', 'wr', 'rh', 'v', 'c', 's', 'ps', 'l', 'll']
 
+export const phoneme_name_start_five = ['m', 'g', 'gh', 'k', 'f']
+
 export const phoneme_name_middle_a = ['a', 'ai', 'au', 'ay', 'ea']
 
 export const phoneme_name_middle_o = ['o', 'oo', 'ou']

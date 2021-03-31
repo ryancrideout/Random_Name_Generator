@@ -46,6 +46,7 @@ import {
     phoneme_name_start_two,
     phoneme_name_start_three,
     phoneme_name_start_four,
+    phoneme_name_start_five,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
@@ -103,6 +104,7 @@ export const phonemeArray = [
     phoneme_name_start_two,
     phoneme_name_start_three,
     phoneme_name_start_four,
+    phoneme_name_start_five,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
@@ -156,4 +158,32 @@ export const nameTemplate_lux = [
     [phoneme_l],
     [phoneme_short_u],
     [phoneme_z]
+]
+
+// The inspiration for this name template is "Malorie"
+export const nameTemplate_malorie = [
+    [phoneme_name_start_five],
+    [phoneme_short_a],
+    [phoneme_l],
+    [phoneme_or],
+    [phoneme_long_e]
+]
+
+// The inspiration for this name template is "Rylan".
+export const nameTemplate_rylan = [
+    [phoneme_r, phoneme_h],
+    [phoneme_y],
+    [phoneme_l],
+    [phoneme_short_a, phoneme_long_a],
+    [phoneme_n]
+]
+
+// The inspiration for this name template is "Kaitlynn"
+export const nameTemplate_kaitlynn = [
+    [phoneme_k, phoneme_b],
+    [phoneme_long_a],
+    [phoneme_t],
+    [phoneme_l],
+    [phoneme_y],
+    [phoneme_n]
 ]
