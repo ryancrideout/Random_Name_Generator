@@ -5,7 +5,7 @@ import {titles} from "./titles"
 
 // Import name templates from nameTemplates
 import {nameTemplate_1, nameTemplate_darius, nameTemplate_porter, nameTemplate_ryan, nameTemplate_timo,
-        nameTemplate_lux} from "./nameTemplates"
+        nameTemplate_lux, nameTemplate_malorie, nameTemplate_rylan, nameTemplate_kaitlynn} from "./nameTemplates"
 
 export function generateName() {
     // Redid the logic behind name generation, this is what I used for inspiration:
@@ -13,7 +13,7 @@ export function generateName() {
 
     // Create an array of all of the available name templates. We can expand on this idea later.
     var templateList = [nameTemplate_1, nameTemplate_darius, nameTemplate_porter, nameTemplate_ryan, nameTemplate_timo,
-                        nameTemplate_lux]
+                        nameTemplate_lux, nameTemplate_malorie, nameTemplate_rylan, nameTemplate_kaitlynn]
 
     // Determine what name template we'll actually use.
     var templateIndex = Math.floor(Math.random() * templateList.length)
