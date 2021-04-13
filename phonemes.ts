@@ -98,6 +98,8 @@ export const phoneme_name_start_four = ['t', 'th', 'mn', 'm', 'n', 'kn', 'gn', '
 
 export const phoneme_name_start_five = ['m', 'g', 'gh', 'k', 'f']
 
+export const phoneme_name_start_six = ['s', 'c', 'ce', 'sc', 'ps', 'j', 'm', 'b', 'y']
+
 export const phoneme_name_middle_a = ['a', 'ai', 'au', 'ay', 'ea']
 
 export const phoneme_name_middle_o = ['o', 'oo', 'ou']
@@ -109,3 +111,5 @@ export const phoneme_name_middle_i = ['i', 'y', 'e']
 export const phoneme_name_middle_ar = ['ar', 'er', 'our', 'ur', 'air', 'ear', 'eir']
 
 export const phoneme_name_end_one = ['ius', 'eus', 'os', 'us', 'uis', 'ies']
+
+export const phoneme_name_end_two = ['ia', 'ea', 'oa', 'ua', 'uia', 'ya', 'iea']

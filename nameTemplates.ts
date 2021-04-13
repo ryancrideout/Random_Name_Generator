@@ -47,12 +47,14 @@ import {
     phoneme_name_start_three,
     phoneme_name_start_four,
     phoneme_name_start_five,
+    phoneme_name_start_six,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
     phoneme_name_middle_i,
     phoneme_name_middle_ar,
-    phoneme_name_end_one
+    phoneme_name_end_one,
+    phoneme_name_end_two
 } from "./phonemes"
 
 // Maybe this could be a dictionary? <number>: <array>
@@ -105,12 +107,14 @@ export const phonemeArray = [
     phoneme_name_start_three,
     phoneme_name_start_four,
     phoneme_name_start_five,
+    phoneme_name_start_six,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
     phoneme_name_middle_i,
     phoneme_name_middle_ar,
-    phoneme_name_end_one
+    phoneme_name_end_one,
+    phoneme_name_end_two
 ]
 // Could build custom phonemes that include other phonemes.
 
@@ -186,4 +190,12 @@ export const nameTemplate_kaitlynn = [
     [phoneme_l],
     [phoneme_y],
     [phoneme_n]
+]
+
+// The inspiration for this name template is "Sophia"
+export const nameTemplate_sophia = [
+    [phoneme_name_start_six],
+    [phoneme_name_middle_o],
+    [phoneme_f],
+    [phoneme_name_end_two],
 ]
