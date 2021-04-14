@@ -48,6 +48,7 @@ import {
     phoneme_name_start_four,
     phoneme_name_start_five,
     phoneme_name_start_six,
+    phoneme_name_start_seven,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
@@ -108,6 +109,7 @@ export const phonemeArray = [
     phoneme_name_start_four,
     phoneme_name_start_five,
     phoneme_name_start_six,
+    phoneme_name_start_seven,
     phoneme_name_middle_a,
     phoneme_name_middle_o,
     phoneme_name_middle_t,
@@ -197,5 +199,12 @@ export const nameTemplate_sophia = [
     [phoneme_name_start_six],
     [phoneme_name_middle_o],
     [phoneme_f],
-    [phoneme_name_end_two],
+    [phoneme_name_end_two]
+]
+
+// The inspiration for this name template is "Carl"
+export const nameTemplate_carl = [
+    [phoneme_name_start_seven],
+    [phoneme_short_ar],
+    [phoneme_l]
 ]
