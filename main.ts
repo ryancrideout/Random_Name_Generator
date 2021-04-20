@@ -52,6 +52,44 @@ export function generateName() {
     textBox.value = fullName
 }
 
+
+export function generateAttributes() {
+
+    // Grab all of our attribute value boxes
+    var strengthBox = (<HTMLInputElement>document.getElementById("strengthField"));
+    var dexterityBox = (<HTMLInputElement>document.getElementById("dexterityField"));
+    var constitutionBox = (<HTMLInputElement>document.getElementById("constitutionField"));
+    var wisdomBox = (<HTMLInputElement>document.getElementById("wisdomField"));
+    var charismaBox = (<HTMLInputElement>document.getElementById("charismaField"));
+    var intelligenceBox = (<HTMLInputElement>document.getElementById("intelligenceField"));
+
+    // Grab our radio buttons
+    var pointBuyRadio = (<HTMLInputElement>document.getElementById("pointBuyRadio"));
+    var fullRandomRadio = (<HTMLInputElement>document.getElementById("fullRandomRadio"));
+
+    // Grabbing the values of the Advanced Options - we use them to do all of the Math.
+    var pointBuy = (<HTMLInputElement>document.getElementById("pointBuyValue"));
+    var fullRandom = (<HTMLInputElement>document.getElementById("maxRandomValue"));
+
+    // Test code just so that I understand how this works.
+    if(fullRandomRadio.checked) {
+        strengthBox.value = fullRandom.value
+        dexterityBox.value = fullRandom.value
+        constitutionBox.value = fullRandom.value
+        wisdomBox.value = fullRandom.value
+        charismaBox.value = fullRandom.value
+        intelligenceBox.value = fullRandom.value
+    } else if(pointBuyRadio.checked) {
+        strengthBox.value = pointBuy.value
+        dexterityBox.value = pointBuy.value
+        constitutionBox.value = pointBuy.value
+        wisdomBox.value = pointBuy.value
+        charismaBox.value = pointBuy.value
+        intelligenceBox.value = pointBuy.value
+    }
+
+}
+
 /*
 
 I want to overhaul the logic in the random name generator, Timo suggested looking at phonemes and syllables.

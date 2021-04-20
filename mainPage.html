@@ -22,6 +22,7 @@
    <input type="checkbox" id="generateTitle" name="generateTitle" value="True">
    <label for="generateTitle">Generate title?</label>
    <!-- Wishlist: Reroll titles -->
+   <!-- Alright if I want to reroll titles, I'll have to get rid of the original title.-->
 
    <br>
    <br>
@@ -40,10 +41,30 @@
    <br>
    Int: <input type="text" id="intelligenceField" size="3">
    <br>
+   <br>
+   Select an Attribute Type:
+   <div>
+   <input type="radio" id="pointBuyRadio" name="attributeChoice" value="pointBuy" checked>
+   <label for="pointBuy">Point Buy</label>
+   </div>
+   <div>
+   <input type="radio" id="fullRandomRadio" name="attributeChoice" value="fullRandom">
+   <label for="fullRandom">Full Random</label>
+   </div>
 
-   <button>Roll Stats!</button>
+   <button onclick="main.generateAttributes()">Roll Stats!</button>
+   <br>
+   <br>
+   Advanced Options:
+   <br>
+   Points for Point Buy: <input type="text" id="pointBuyValue" size="3" value="27">
+   <br>
+   Maximum Score for Full Random: <input type="text" id="maxRandomValue" size="3" value="20">
+   <br>
    
    <!-- Wishlist: Generate stats for a D&D character -->
+   <!-- Want to do a Point Buy system reroll at first, user can specify number of points.-->
+   <!-- How to do stuff when radio button is checked?  - https://html5-tutorial.net/forms/radiobuttons/-->
 
 </body>
 </html>
