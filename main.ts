@@ -73,12 +73,33 @@ export function generateAttributes() {
 
     // Test code just so that I understand how this works.
     if(fullRandomRadio.checked) {
-        strengthBox.value = fullRandom.value
-        dexterityBox.value = fullRandom.value
-        constitutionBox.value = fullRandom.value
-        wisdomBox.value = fullRandom.value
-        charismaBox.value = fullRandom.value
-        intelligenceBox.value = fullRandom.value
+        // Get the ceiling for the full random values. We have to add one to the value due
+        // to how rounding works. I guess we
+        // var strengthRandomCeiling = Math.floor(Math.random() * Number(fullRandom.value + 1))
+        var strengthRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
+        strengthBox.value = String(strengthRandomCeiling)
+
+        var dexterityRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
+        dexterityBox.value = String(dexterityRandomCeiling)
+
+        var constitutionRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
+        constitutionBox.value = String(constitutionRandomCeiling)
+
+        var wisdomRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
+        wisdomBox.value = String(wisdomRandomCeiling)
+
+        var charismaRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
+        charismaBox.value = String(charismaRandomCeiling)
+
+        var intelligenceRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
+        intelligenceBox.value = String(intelligenceRandomCeiling)
+
+        // strengthBox.value = fullRandom.value
+        // dexterityBox.value = fullRandom.value
+        // constitutionBox.value = fullRandom.value
+        // wisdomBox.value = fullRandom.value
+        // charismaBox.value = fullRandom.value
+        // intelligenceBox.value = fullRandom.value
     } else if(pointBuyRadio.checked) {
         strengthBox.value = pointBuy.value
         dexterityBox.value = pointBuy.value
