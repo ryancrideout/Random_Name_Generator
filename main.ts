@@ -55,6 +55,30 @@ export function generateName() {
 
 export function generateAttributes() {
 
+    // This is a helper function we use to help get our point buy values. Takes a "pointBuyPool" as an input.
+    function calculatePointBuyValue(pointBuyPool) {
+        // Randomly grab a value from the pool. That is, get the index so we can reference the dictionary.
+        var pointBuyPoolIndex = Math.floor(Math.random() * pointBuyPool.length)
+        var pointBuyScore = pointBuyPool[pointBuyPoolIndex]
+
+        // Put our point buy value into the array
+        pointBuyValues.push(pointBuyScore)
+
+        // Need to subtract the budget as well, and subtract one of the slots left.
+        pointBuyBudget -= pointBuyCosts[pointBuyScore]
+        slotsLeft -= 1
+    }
+
+    // Function used to remove elements from an array. Shamelessly stolen from the internet.
+    // https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
+    // Note that we're passing in the INDEX, not the value.
+    function removeValueOnce(array, index) {
+        if (index > -1){
+            array.splice(index, 1)
+        }
+        return array
+    }
+
     // Grab all of our attribute value boxes
     var strengthBox = (<HTMLInputElement>document.getElementById("strengthField"));
     var dexterityBox = (<HTMLInputElement>document.getElementById("dexterityField"));
@@ -73,9 +97,7 @@ export function generateAttributes() {
 
     // Test code just so that I understand how this works.
     if(fullRandomRadio.checked) {
-        // Get the ceiling for the full random values. We have to add one to the value due
-        // to how rounding works. I guess we
-        // var strengthRandomCeiling = Math.floor(Math.random() * Number(fullRandom.value + 1))
+        // Get the ceiling for the full random values. 
         var strengthRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
         strengthBox.value = String(strengthRandomCeiling)
 
@@ -94,19 +116,106 @@ export function generateAttributes() {
         var intelligenceRandomCeiling = Math.ceil(Math.random() * Number(fullRandom.value))
         intelligenceBox.value = String(intelligenceRandomCeiling)
 
-        // strengthBox.value = fullRandom.value
-        // dexterityBox.value = fullRandom.value
-        // constitutionBox.value = fullRandom.value
-        // wisdomBox.value = fullRandom.value
-        // charismaBox.value = fullRandom.value
-        // intelligenceBox.value = fullRandom.value
     } else if(pointBuyRadio.checked) {
-        strengthBox.value = pointBuy.value
-        dexterityBox.value = pointBuy.value
-        constitutionBox.value = pointBuy.value
-        wisdomBox.value = pointBuy.value
-        charismaBox.value = pointBuy.value
-        intelligenceBox.value = pointBuy.value
+        // The format of this dictionary is <Attribute Value>: <Point Cost>
+        var pointBuyCosts = {
+            18: 19,
+            17: 15,
+            16: 12,
+            15: 9,
+            14: 7,
+            13: 5,
+            12: 4,
+            11: 3,
+            10: 2,
+            9: 1,
+            8: 0,
+            7: -1,
+            6: -2,
+            5: -4,
+            4: -6,
+            3: -9
+        }
+
+        var pointBuyBudget = Number(pointBuy.value)
+
+        // This is how many attribute slots we have left:
+        var slotsLeft = 6
+
+        // And this is where we'll put our point buy values:
+        var pointBuyValues = []
+
+        // And this is where the magic begins:
+        while (slotsLeft > 0) {
+            // I wanted to do a switch statement here, but apparently they don't like the comparisons I try to do.
+            // In short, depending on the budget, we throw different values into the point buy calculator. Nothing too crazy.
+
+            // Alright this works, but it doesn't exactly adhere to the rules. The logic could be stricter.
+
+            if (pointBuyBudget > 40){
+                calculatePointBuyValue([18, 17, 16])
+                continue
+            } else if (pointBuyBudget > 30){
+                calculatePointBuyValue([18, 17, 16, 15, 14])
+                continue
+            } else if (pointBuyBudget <= 27){
+                calculatePointBuyValue([15, 14, 13, 12, 11, 10, 9, 8])
+                continue
+            } else if (pointBuyBudget <= 7){
+                calculatePointBuyValue([14, 13, 12, 11, 10, 9, 8])
+                continue
+            } else if (pointBuyBudget <= 5){
+                calculatePointBuyValue([13, 12, 11, 10, 9, 8])
+                continue
+            } else if (pointBuyBudget <= 4){
+                calculatePointBuyValue([12, 11, 10, 9, 8])
+                continue
+            } else if (pointBuyBudget <= 3){
+                calculatePointBuyValue([11, 10, 9, 8])
+                continue
+            } else if (pointBuyBudget <= 2){
+                calculatePointBuyValue([10, 9, 8])
+                continue
+            } else if (pointBuyBudget <= 1){
+                calculatePointBuyValue([9, 8])
+                continue
+            } else if (pointBuyBudget == 0){
+                calculatePointBuyValue([8])
+                continue
+            } else {
+                calculatePointBuyValue([7, 6, 5, 4, 3])
+                continue
+            }
+
+        }
+
+        // Now we need to shuffle the values and assign them.
+        var pointBuyValuesIndex = Math.floor(Math.random() * pointBuyValues.length)
+        strengthBox.value = pointBuyValues[pointBuyValuesIndex]
+        pointBuyValues = removeValueOnce(pointBuyValues, pointBuyValuesIndex)
+
+        pointBuyValuesIndex = Math.floor(Math.random() * pointBuyValues.length)
+        dexterityBox.value = pointBuyValues[pointBuyValuesIndex]
+        pointBuyValues = removeValueOnce(pointBuyValues, pointBuyValuesIndex)
+
+        pointBuyValuesIndex = Math.floor(Math.random() * pointBuyValues.length)
+        constitutionBox.value = pointBuyValues[pointBuyValuesIndex]
+        pointBuyValues = removeValueOnce(pointBuyValues, pointBuyValuesIndex)
+
+        pointBuyValuesIndex = Math.floor(Math.random() * pointBuyValues.length)
+        wisdomBox.value = pointBuyValues[pointBuyValuesIndex]
+        pointBuyValues = removeValueOnce(pointBuyValues, pointBuyValuesIndex)
+
+        pointBuyValuesIndex = Math.floor(Math.random() * pointBuyValues.length)
+        charismaBox.value = pointBuyValues[pointBuyValuesIndex]
+        pointBuyValues = removeValueOnce(pointBuyValues, pointBuyValuesIndex)
+
+        // At this point there should only be one value left in the array, so
+        // this shouldn't be necessary.
+        pointBuyValuesIndex = Math.floor(Math.random() * pointBuyValues.length)
+        intelligenceBox.value = pointBuyValues[pointBuyValuesIndex]
+        pointBuyValues = removeValueOnce(pointBuyValues, pointBuyValuesIndex)
+
     }
 
 }
