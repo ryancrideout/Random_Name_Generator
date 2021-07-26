@@ -1,0 +1,37 @@
+I just wanted to write some personal notes on this project in case I am ever asked about it.
+
+1) Why Typescript?
+- I just wanted to try my hand at learning a new language.
+
+2) What were some difficulties about this project?
+- The two big things I can think of were figuring out how to get Parcel to work. 
+  I needed to bundle together all of my files so that they ran as one package when one decided to run the random name generator.
+  I didn't realize that this was something I needed to do, so it took a lot of bashing my head against the wall and Googling to figure this out.
+  Once I got Parcel working though, it was smooth sailing. Why Parcel? I just wanted something that worked "out of the box". I didn't want to spend much time configuring it.
+  I also had some problems with generating names, but I'll talk about that in the next bullet.
+  
+3) What did the process for generating random names look like?
+- At first I just had the program try to generate random strings, and then I implemented some logic to try to make the random strings look like words.
+  I had limited success with this, as I wasn't following any true linguistic rules, just rules I thought would work well.
+  As such, the strings I were generating loosely resembled names, but didn't really look like names at all.
+  I then did some brainstorming with a friend, and we determined that the name generator would work better if we used syllables as a basis.
+  I did some searching and found this site: https://www.flipcode.com/archives/Generating_Names_Phonetically.shtml
+  And away I went. The code I have now is based on that website.
+
+4) What technologies were used in this project?
+- Typescript, HTML and Parcel.
+
+5) You didn't really flesh out the name templates that well. How would you have handled a large number of name templates?
+- Disclaimer, it's been a couple of months since I've looked at the code, but I think what I would end up doing is storing the templates in a database.
+  I think if I had the templates in some sort of database, then I could randomly query a name template, pull it from the database and then just work with that.
+  Right now I just have everything in memory, which I think is fine if I don't use a lot of templates, but if I were to expand this project then I'd think about a database.
+  
+6) This Name Generator seems a bit incomplete. Any particular reason why you stopped working on it?
+- Well initially I wanted to make this a random character generator for D&D, which I still may do eventually. 
+  The problem is though, there are just so many things I want to work on and so little time!
+  While I'm pretty happy about the PROCESS of generating random names (Areas of improvement would be just adding more name templates + cleaning them up)
+  The rest of the character generation I could flesh out some more. I could take this concept further, but as it stands I'm happy with it.
+  I would like to work on this some more, but there's just too many things to do haha.
+  
+7) How long did you work on this?
+- I picked away at it for about 3 months. This means maybe around 1 - 5 hours a week. I didn't really keep track :X
